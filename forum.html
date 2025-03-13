@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - My Site</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-dark text-light">
+    <nav class="navbar navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">My Forum</a>
+            <button class="btn btn-outline-light" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+    <div class="container my-5">
+        <h1 class="mb-4">Forum</h1>
+        <!-- Post Creation Form -->
+        <div class="card bg-secondary p-4 mb-4">
+            <h3>Create a Post</h3>
+            <form id="postForm">
+                <div class="mb-3">
+                    <label for="postTitle" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="postTitle" placeholder="Enter post title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="postContent" class="form-label">Content</label>
+                    <textarea class="form-control" id="postContent" rows="4" placeholder="Write your post here" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit Post</button>
+            </form>
+        </div>
+        <!-- Posts Display -->
+        <div id="postsContainer" class="row"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+        // Redirect to login if not logged in
+        if (!localStorage.getItem('loggedIn')) {
+            window.location.href = 'index.html';
+        }
+        loadPosts();
+    </script>
+</body>
+</html>
